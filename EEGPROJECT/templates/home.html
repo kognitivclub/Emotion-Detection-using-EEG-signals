@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    <style>
+       
+          body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://img.freepik.com/free-vector/gradient-brain-background_52683-120502.jpg?w=900&t=st=1698004473~exp=1698005073~hmac=67fd689c720dbf869438943aed51553cb65d9a98537bc10bfe1460230bcd8cb6');
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+
+        #emotionForm{
+            flex-grow: 1;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+        }
+
+        #emotionForm h2 {
+            text-align: center;
+            font-size: xx-large;
+            color: white;
+        }
+
+        #emotionForm div {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        #emotionForm label {
+            display: block;
+            font-weight:bolder;
+            font-size: x-large;
+            font-style: italic;
+            color: white;
+        }
+        #emotionForm label h8{
+            color:blue;
+        }
+
+        #emotionForm input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: lightblue;
+        }
+
+        #emotionForm button {
+            width: 20%;
+            display: block;
+            font-weight:bolder;
+            font-size: x-large;
+            font-style: italic;
+            margin: 0 auto;
+            background-color: #034e9eac;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #emotionForm button:hover {
+            background-color: #034e9eac;
+        }
+        #emotionForm #aaa{
+            display: flex;
+            
+        }
+        #emotionForm #a{
+            margin-right: 100px;
+            margin-left: 150px;
+        }
+        #emotionForm #b{
+            margin-right: 150px;
+            margin-left: 100px;
+        }
+        
+        .slidecontainer {
+        width: 100%;
+        }
+        footer {
+  background: #16222A;
+  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
+  background: linear-gradient(59deg, #3A6073, #16222A);
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+}
+
+footer a {
+  color: #fff;
+  font-size: 14px;
+  transition-duration: 0.2s;
+}
+
+footer a:hover {
+  color: #007bb7;
+  text-decoration: none;
+}
+
+.copy {
+  font-size: 12px;
+  padding: 10px;
+  border-top: 1px solid #FFFFFF;
+}
+
+.footer-middle {
+  padding-top: 2em;
+  color: white;
+}
+
+
+/*SOCİAL İCONS*/
+
+/* footer social icons */
+
+ul.social-network {
+  list-style: none;
+  display: inline;
+  margin-left: 0 !important;
+  padding: 0;
+}
+
+ul.social-network li {
+  display: inline;
+  margin: 0 5px;
+}
+
+
+/* footer social icons */
+
+.social-network a.icoInstagram:hover {
+  background-color: #d62976 ;
+}
+
+.social-network a.icoLinkedin:hover {
+  background-color: #007bb7;
+}
+
+.social-network a.icoInstagram:hover i,
+.social-network a.icoLinkedin:hover i {
+  color: #fff;
+}
+
+.social-network a.socialIcon:hover,
+.socialHoverClass {
+  color: #44BCDD;
+}
+
+.social-circle li a {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.social-circle li i {
+  margin: 0;
+  line-height: 30px;
+  text-align: center;
+}
+
+.social-circle li a:hover i,
+.triggeredHover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms--transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.social-circle i {
+  color: #595959;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.social-network a {
+  background-color: #F9F9F9;
+}
+
+       
+
+    </style>
+</head>
+<body oncontextmenu="return false">
+    
+    <form id="emotionForm" method="POST" action="predictemotion" >
+        {% csrf_token %}
+        <h2>EMOTION DETECTION</h2>
+        <div id="aaa">
+        <div id="a">
+        <div>
+            <label for="valence">Valence: <h8 id="valenceValue">10</h8> </label>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="10" step="0.1" value="10" id="valence" name="valence" oninput="valenceValue.innerText = this.value" required>
+                 
+            </div>
+        </div>
+        <div>
+            <label for="arousal">Arousal:  <h8 id="arousalValue">10</h8></label>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="10" step="0.1" value="10" id="arousal" name="arousal" oninput="arousalValue.innerText = this.value" required>
+           </div>
+        </div>
+        <div>
+            <label for="dominance">Dominance:  <h8 id="dominanceValue">10</h8></label>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="10" step="0.1" value="10" id="dominance" name="dominance" oninput="dominanceValue.innerText = this.value" required>
+           </div>        </div>
+        </div>
+        <div id="b">
+        <div>
+            <label for="liking">Liking: <h8 id="likingValue">5</h8></label>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="5"  id="liking" value="5" name="liking" oninput="likingValue.innerText = this.value" required>
+            </div>        </div>
+        <div>
+            <label for="familiarity">Familiarity:  <h8 id="familiarityValue">5</h8></label>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="5"  id="familiarity" value="5" name="familiarity" oninput="familiarityValue.innerText = this.value" required>
+           </div>        </div>
+        <div>
+            <label for="relevance">Relevance: <h8 id="relevanceValue">5</h8></label>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="5" step="0.1"  value="5" id="relevance" name="relevance" oninput="relevanceValue.innerText = this.value" required>
+            </div>        </div>
+        </div>
+        </div>
+        <button type="submit">DETECT</button>
+        <h2>Emotion : {{emotion}} </h2>
+        <div id="imageContainer"></div>
+
+    </form>
+    <script>
+        document.onkeydown = (e) => {
+    if (e.key == 123) {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key == 'I') {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key == 'C') {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.shiftKey && e.key == 'J') {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && e.key == 'U') {
+        e.preventDefault();
+    }
+};
+        const form = document.getElementById('emotionForm');
+       
+        form.addEventListener('submit', function (e) {
+            // You can retrieve the values entered by the user here
+            const valence = document.getElementById('valence').value;
+            const arousal = document.getElementById('arousal').value;
+            const dominance = document.getElementById('dominance').value;
+            const liking = document.getElementById('liking').value;
+            const familiarity = document.getElementById('familiarity').value;
+            const relevance = document.getElementById('relevance').value;
+            
+                
+
+            // You can use these values as needed (e.g., send to a server, display, etc.)
+            console.log("Valence: " + valence);
+            console.log("Arousal: " + arousal);
+            console.log("Dominance: " + dominance);
+            console.log("Liking: " + liking);
+            console.log("Familiarity: " + familiarity);
+            console.log("Relevance: " + relevance);
+            form.submit();
+            
+        });
+        var responseText=`{{emotion}}`;
+            var imageUrls = {
+        "Happy": "https://cdn.pixabay.com/photo/2020/12/27/20/24/smile-5865208_1280.png", 
+        "Sad": "https://www.cambridge.org/elt/blog/wp-content/uploads/2019/07/Sad-Face-Emoji.png",
+        "Alarmed": "https://emojiisland.com/cdn/shop/products/OMG_Face_Emoji_large.png?v=1571606037",
+        "Neutral": "https://emojiisland.com/cdn/shop/products/Neutral_Face_Emoji_grande.png?v=1571606037"
+    };
+    var imageContainer = document.getElementById("imageContainer");
+
+    if (imageUrls.hasOwnProperty(responseText)) {
+    var img = document.createElement("img");
+    img.src = imageUrls[responseText];
+    img.width=50;
+    img.height=50;
+    img.style.display = "block";
+    img.style.margin = "0 auto";
+    imageContainer.appendChild(img);
+    } else {
+    }
+    </script>
+    </body>
+    <footer class="mainfooter" role="contentinfo">
+        <div class="footer-middle">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-3" style="margin-right: 10%;">             
+                <h4>Kognitiv Club </h4>
+                <ul class="list-unstyled">
+                  <li><a href="#"></a></li>
+                  <li><p>Our vision is to bring support to mankind using intelligence-based technologies AI and DS.</p></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-3">
+                <h4>Project Team</h4>
+                <ul class="list-unstyled">
+                  <li><a href="https://www.linkedin.com/in/shaik-zuveriya-08176b226/">Shaik Zuveriya</a></li>
+                  <li><a href="https://www.linkedin.com/in/yamuna-tirampuram-857194226/">Yamuna Tirampuram</a></li>
+                  <li><a href="https://www.linkedin.com/in/revanth-chandragiri/">Revanth Chandragiri</a></li>
+                </ul>
+            </div>
+              <div class="col-md-3">
+                  <h4>Follow Us</h4>
+                  <ul class="social-network social-circle">
+                   <li><a href="https://www.instagram.com/kognitiv_club/" class="icoInstagram" title="Facebook"><i class="fa fa-instagram"></i></a></li>
+                   <li><a href="https://www.linkedin.com/company/kognitiv-club/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>				
+              </div>
+              
+          </div>
+          <div class="row">
+              <div class="col-md-12 copy">
+                  <p class="text-center">&copy; Copyright 2023 - Kognitiv.  All rights reserved.</p>
+              </div>
+          </div>
+      
+      
+        </div>
+        </div>
+      </footer>
+</html>
